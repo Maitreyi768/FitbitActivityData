@@ -25,8 +25,8 @@ cursor.execute('''
 IF NOT EXISTS (
     SELECT name
         FROM sys.databases
-        WHERE name = N'Activities')
-CREATE DATABASE Activities ''')
+        WHERE name = N'Activities2')
+CREATE DATABASE Activities2 ''')
 
 cursor.close()
 conn.close()
@@ -44,8 +44,8 @@ cursor = conn.cursor()
 
 #Create a table called Activity with info about the activities the user has performed
 newTable = """
-IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Activity' AND xtype='U')
-CREATE TABLE Activity (
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Activity2' AND xtype='U')
+CREATE TABLE Activity2 (
     StartTime DATETIME NOT NULL PRIMARY KEY,
     ActiveDurationSeconds INT NOT NULL, 
     ActivityName VARCHAR(60),
@@ -114,7 +114,7 @@ if activityrequest.status_code == 200:
         
         #Insert the values into the table
         cursor.execute("""
-        INSERT INTO Activity (
+        INSERT INTO Activity2 (
             StartTime, ActiveDurationSeconds, ActivityName, Steps, PaceSecondsPerMetre, SpeedMetresPerSecond, AverageHeartRate, 
             DistanceMetres, SedentarySeconds, LightlyActiveSeconds, FairlyActiveSeconds, VeryActiveSeconds
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
