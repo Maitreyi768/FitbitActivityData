@@ -1,80 +1,111 @@
+
 # FitbitActivityData
-This repository pulls activity data from the Fitbit and stores it in SQL Server.
 
-# Installment Requirements
-Download python version >3.10  
-Link:  
-https://www.python.org/downloads/
+This repository pulls activity data from Fitbit and stores it in SQL Server.
 
-Download ngrok  
-Link:  
-https://ngrok.com/downloads/windows?tab=download  
+## Installment Requirements
 
-Download SQL Server  
-Link:  
-https://www.microsoft.com/en-gb/sql-server/sql-server-downloads  
+1. **Download Python (version > 3.10)**  
+   [Link: Python Downloads](https://www.python.org/downloads/)
 
-Download SQL Server Management Studio  
-Link:  
-https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16
+2. **Download ngrok**  
+   [Link: ngrok Downloads](https://ngrok.com/downloads/windows?tab=download)
 
-# Account Requirements
-Fitbit developer account  
-Link:  
-https://dev.fitbit.com/
+3. **Download SQL Server**  
+   [Link: SQL Server Downloads](https://www.microsoft.com/en-gb/sql-server/sql-server-downloads)
 
-Pipedream account:  
-Link:  
-https://pipedream.com/
+4. **Download SQL Server Management Studio**  
+   [Link: SSMS Downloads](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
 
-# Getting Started
+## Account Requirements
 
-1) Register an app in Fitbit developer account.   
-Provide the:  
+1. **Fitbit Developer Account**  
+   [Link: Fitbit Developer](https://dev.fitbit.com/)
 
--Application Name  
--Description  
--Application Website URL  
--Organization  
--Organization Website URL  
--Terms of Service URL  
--Privacy Policy URL  
--OAuth 2.0 Application Type  
--Redirect URL  
--Default Access Type  
+2. **Pipedream Account**  
+   [Link: Pipedream](https://pipedream.com/)
 
-Note: The URLs except the Redirect URL can be random. Set the Redirect URL to http://localhost, the OAuth 2.0 Application Type to personal, and the Default Access Type to Read Only.  
+## Getting Started
 
-For example:
+### 1) Register an App in Fitbit Developer Account
 
+Provide the following details during the registration process:
 
+- **Application Name**
+- **Description**
+- **Application Website URL**
+- **Organization**
+- **Organization Website URL**
+- **Terms of Service URL**
+- **Privacy Policy URL**
+- **OAuth 2.0 Application Type**
+- **Redirect URL**
+- **Default Access Type**
 
+**Note:** The URLs (except the Redirect URL) can be random.  
+- Set **Redirect URL** to `http://localhost`
+- Set **OAuth 2.0 Application Type** to `Personal`
+- Set **Default Access Type** to `Read Only`
 
-![Sample Registration of app](assets/images/RegisterApp.png)  
+Example registration:
 
+![Sample Registration of app](assets/images/RegisterApp.png)
 
+---
 
+### 2) Follow the OAuth 2.0 Tutorial to Get Access Keys
 
-2) Follow the OAuth 2.0 Tutorial to get the access keys
+Make sure to follow the tutorial linked in your Fitbit developer account to retrieve the required access keys:
 
+![Follow the link provided](assets/images/oauth.png)
 
-![Follow the link provided](assets/images/oauth.png)  
+---
 
+### 3) Verify Subscriber (Add Pipedream Details Here)
 
+- Here, include any steps you need to verify or set up your subscriber with Pipedream.
 
-4) Run the initialScript in the command line using the command:
+---
 
-`python initialScript.py`  
+### 4) Replace Keys in `initialScript.py`
 
+- Open `initialScript.py` and replace the key where indicated.
+- Run the script in the command line using the following command:
 
-This should create an activities database:
+```bash
+python initialScript.py
+```
 
+This should create the **Activities** database and the **Activity** table:
 
-![Database created](assets/images/databasecreated.png)  
+![Database Created](assets/images/databasecreated.png)
 
+---
 
+### 5) Create an ngrok Endpoint
 
-5) Run the server file using the command:
+- Run ngrok to expose port 8000:
 
-`python server.py`  
-   
+```bash
+ngrok http 8000
+```
+
+This will expose port 80, allowing it to receive requests from the Pipedream URL.
+
+---
+
+### 6) Replace Key in `server.py`
+
+- Open `server.py` and replace the key where indicated.
+- Run the server script using the following command:
+
+```bash
+python server.py
+```
+
+---
+
+### 7) Complete Activity Using Fitbit
+
+- Keep the Fitbit app open on your phone to immediately sync with your account.
+- This should update the **Activity** table successfully.
