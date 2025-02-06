@@ -105,7 +105,7 @@ python server.py
 
 ---
 
-### 7) Complete Activity Using Fitbit
+### 7) Edit Activity Data Using Fitbit
 
-- Keep the Fitbit app open on your phone to immediately sync with your account.
+- Complete an activity and wear the Fitbit. Keep the Fitbit app open on your phone to immediately sync the data with your account.
 - This should update the **Activity** table successfully.
