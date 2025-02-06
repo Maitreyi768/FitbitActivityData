@@ -50,6 +50,14 @@ Note: The URLs except the Redirect URL can be random. Set the Redirect URL to ht
 2) Follow the OAuth 2.0 Tutorial to get the access keys
 ![Follow the link provided](assets/images/oauth.png)  
 
-Start by running the initialScript in the command line using the command
+4) Run the initialScript in the command line using the command:
 
-python initialScript.py
+`python initialScript.py`  
+
+This should create an activities database:
+![Database created](assets/images/databasecreated.png)  
+
+5) Run the server file using the command:
+
+`python server.py`  
+   
