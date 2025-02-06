@@ -29,7 +29,7 @@ https://pipedream.com/
 
 # Getting Started
 
-Register an app in Fitbit developer account.   
+1) Register an app in Fitbit developer account.   
 Provide the:  
 
 -Application Name  
@@ -45,9 +45,10 @@ Provide the:
 
 Note: The URLs except the Redirect URL can be random. Set the Redirect URL to http://localhost, the OAuth 2.0 Application Type to personal, and the Default Access Type to Read Only
 
-Example
-{Insert image here}
+![Sample Registration of app](assets/images/RegisterApp.png)  
 
+2) Follow the OAuth 2.0 Tutorial to get the access keys
+![Follow the link provided](assets/images/oauth.png)  
 
 Start by running the initialScript in the command line using the command
 
