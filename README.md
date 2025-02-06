@@ -73,33 +73,6 @@ This will expose port 80, allowing it to receive requests from the Pipedream URL
 
 ---
 
-### 4) Create Pipedream workflow
-
-- Create a new workflow in pipedream and add a new workflow when prompted
-
-  ![new workflow](assets/images/pipedreamnew.png)
-
-- Add a new HTTP/Webhook action to the workflow
-
- ![initial action](assets/images/action.png)
-
-- Configure the action as the following:
-
-  ![Configuration](assets/images/initialconfig.png)
-
-- Add a new NodeJS action.
-- Configure the node action with the code provided in `nodejscode.txt`. You can find the `nodejscode.txt` file in the root directory of this repository.
-- Add a new HTTP/Webhook action.
-- Configure the action as the following:
-
- ![Configuration](assets/images/finalconfig.png)  
-
-
-- The final workflow should look like this:
-
-![Configuration](assets/images/workflow.png)
-
----
 
 ### 4) Replace Keys in `initialScript.py`
 
@@ -116,7 +89,7 @@ This should create the **Activities** database and the **Activity** table:
 
 ---
 
-### 6) Replace Key in `server.py`
+### 5) Replace Key in `server.py`
 
 - Open `server.py` and replace the key where indicated.
 - Run the server script using the following command:
@@ -127,7 +100,50 @@ python server.py
 
 ---
 
-### 7) Edit Activity Data Using Fitbit
+### 6) Create Pipedream workflow
+
+- Create a new workflow in pipedream and add a new workflow when prompted
+
+  ![new workflow](assets/images/pipedreamnew.png)
+
+- Add a new HTTP/Webhook action to the workflow
+
+ ![initial action](assets/images/action.png)
+
+- Configure the action as the following:
+
+  ![Configuration](assets/images/initialconfig.png)
+
+- Add a new NodeJS action.
+- Configure the node action with the code provided in `nodejscode.txt`. You can find the `nodejscode.txt` file in the root directory of this repository.
+- Add a new HTTP/Webhook action.
+- Configure the action as the following, replacing the URL with the endpoint URL provided by ngrok:
+
+ ![Configuration](assets/images/finalconfig.png)   
+
+
+- The final workflow should look like this (do not deploy workflow yet):
+
+![Configuration](assets/images/workflow.png)  
+
+
+---
+
+### 7) Add and verify subscriber
+
+- Edit the registered app on the Fitbit account  
+- Add a subscriber to the app. The Endpoint URL of the suscriber should be the unique URL provided to trigger.
+
+![Configuration](assets/images/subscriberadd.png)  
+
+- Copy the verification code into the NodeJS action code in pipedream.  
+
+![Configuration](assets/images/verify.png)  
+
+- Deploy the pipedream workflow.
+- Click on verify on the Fitbit App to verify the subscriber.  
+
+### 8) Edit Activity Data Using Fitbit
 
 - Complete an activity and wear the Fitbit. Keep the Fitbit app open on your phone to immediately sync the data with your account.
 - This should update the **Activity** table successfully.
