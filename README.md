@@ -43,19 +43,36 @@ Provide the:
 -Redirect URL  
 -Default Access Type  
 
-Note: The URLs except the Redirect URL can be random. Set the Redirect URL to http://localhost, the OAuth 2.0 Application Type to personal, and the Default Access Type to Read Only
+Note: The URLs except the Redirect URL can be random. Set the Redirect URL to http://localhost, the OAuth 2.0 Application Type to personal, and the Default Access Type to Read Only.  
+
+For example:
+
+
+
 
 ![Sample Registration of app](assets/images/RegisterApp.png)  
 
+
+
+
 2) Follow the OAuth 2.0 Tutorial to get the access keys
+
+
 ![Follow the link provided](assets/images/oauth.png)  
+
+
 
 4) Run the initialScript in the command line using the command:
 
 `python initialScript.py`  
 
+
 This should create an activities database:
+
+
 ![Database created](assets/images/databasecreated.png)  
+
+
 
 5) Run the server file using the command:
 
