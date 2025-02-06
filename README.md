@@ -55,15 +55,49 @@ Example registration:
 
 ### 2) Follow the OAuth 2.0 Tutorial to Get Access Keys
 
-Make sure to follow the tutorial linked in your Fitbit developer account to retrieve the required access keys:
+Follow the tutorial linked in your Fitbit developer account to retrieve the required access keys:
 
 ![Follow the link provided](assets/images/oauth.png)
 
 ---
 
-### 3) Verify Subscriber (Add Pipedream Details Here)
+### 3) Create an ngrok Endpoint
 
-- Add details here
+- Run ngrok to expose port 8000:
+
+```bash
+ngrok http 8000
+```
+
+This will expose port 80, allowing it to receive requests from the Pipedream URL.
+
+---
+
+### 4) Create Pipedream workflow
+
+- Create a new workflow in pipedream and add a new workflow when prompted
+
+  ![new workflow](assets/images/pipedreamnew.png)
+
+- Add a new HTTP/Webhook action to the workflow
+
+ ![initial action](assets/images/action.png)
+
+- Configure the action as the following:
+
+  ![Configuration](assets/images/initialconfig.png)
+
+- Add a new NodeJS action.
+- Configure the node action with the code provided in `nodejscode.txt`. You can find the `nodejscode.txt` file in the root directory of this repository.
+- Add a new HTTP/Webhook action.
+- Configure the action as the following:
+
+ ![Configuration](assets/images/finalconfig.png)  
+
+
+- The final workflow should look like this:
+
+![Configuration](assets/images/workflow.png)
 
 ---
 
@@ -79,18 +113,6 @@ python initialScript.py
 This should create the **Activities** database and the **Activity** table:
 
 ![Database Created](assets/images/databasecreated.png)
-
----
-
-### 5) Create an ngrok Endpoint
-
-- Run ngrok to expose port 8000:
-
-```bash
-ngrok http 8000
-```
-
-This will expose port 80, allowing it to receive requests from the Pipedream URL.
 
 ---
 
