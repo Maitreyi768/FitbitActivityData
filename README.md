@@ -38,7 +38,7 @@ This repository pulls activity data from Fitbit and stores it in SQL Server.
   ```
   Windows:
   ```bash
- .\Scripts\activate
+   .\Scripts\activate
   ```  
 - Once the environment has been activated install dependencies with pip from requirements.txt:
   
