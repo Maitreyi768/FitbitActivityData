@@ -10,8 +10,8 @@ app = Flask(__name__)
 lock = threading.Lock()
 def sendRequest():
     print("sending request")
-    today = datetime.strftime(datetime.now()), '%Y-%m-%d')
-    api = f"https://api.fitbit.com/1/user/-/activities/list.json?afterDate={today}&sort=asc&offset=0&limit=100"
+    yesterday = datetime.strftime((datetime.now() - timedelta(1)), '%Y-%m-%d')
+    api = f"https://api.fitbit.com/1/user/-/activities/list.json?afterDate={yesterday}&sort=asc&offset=0&limit=100"
     header = {
         "Authorization": "Bearer {Replace with access token}", #Replace here with access token
         "Accept-Type": "application/json"
@@ -50,8 +50,6 @@ def sendRequest():
             for activity in responseJson["activities"]:
                 starttime = datetime.fromisoformat(activity["startTime"].replace("Z", "")) 
                 print(starttime)
-                
-                #Check if it's already stored
                 if starttime not in db_start_times:
                     print("adding")
                     #Get the active duration and convert to secs

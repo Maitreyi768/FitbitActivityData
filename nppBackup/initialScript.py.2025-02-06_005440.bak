@@ -4,9 +4,9 @@ import requests
 from datetime import datetime
 
 # Header with access token and API endpoint 
-api = "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2025-01-01&sort=asc&offset=0&limit=100"
+api = "https://api.fitbit.com/1/user/-/activities/list.json?afterDate=2024-01-01&sort=asc&offset=0&limit=100"
 header = {
-    "Authorization": "Bearer {Replace this with access token}", #Replace with access token
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1E3REMiLCJzdWIiOiJDOUszU1YiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJlY2cgcnNldCByaXJuIHJveHkgcm51dCBycHJvIHJzbGUgcmNmIHJhY3QgcmxvYyBycmVzIHJ3ZWkgcmhyIHJ0ZW0iLCJleHAiOjE3Mzg4MjUyNzUsImlhdCI6MTczODc5NjQ3NX0.m4gc6CtcMdj9euZ5ayuBxpwz7EvsgnW65sK30mtLT0w",
     "Accept-Type": "application/json"
 }
 
