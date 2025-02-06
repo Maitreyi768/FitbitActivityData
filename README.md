@@ -63,7 +63,7 @@ Make sure to follow the tutorial linked in your Fitbit developer account to retr
 
 ### 3) Verify Subscriber (Add Pipedream Details Here)
 
-- Here, include any steps you need to verify or set up your subscriber with Pipedream.
+- Add details here
 
 ---
 
