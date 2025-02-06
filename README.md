@@ -23,21 +23,22 @@ This repository pulls activity data from Fitbit and stores it in SQL Server.
   Linux/macOS:  
 
   ```bash
-  python3 -m venv myenv
+  python3 -m venv fitbitdata
   ``` 
   Windows:  
   ```bash
-  python -m venv myenv
+  python -m venv fitbitdata
   ```
    
-- Activate the virtual environment:  
+- Activate the virtual environment in the fitbitdata folder:
+  
   Linux/macOS:
   ```bash
-  source myenv/bin/activate
+  source bin/activate
   ```
   Windows:
   ```bash
-  myenv\Scripts\activate
+ .\Scripts\activate
   ```  
 - Once the environment has been activated install dependencies with pip from requirements.txt:
   
