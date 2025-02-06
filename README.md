@@ -108,9 +108,10 @@ This will expose port 80, allowing it to receive requests from the Pipedream URL
 ---
 
 
-### 4) Replace Keys in `initialScript.py`
+### 4) Replace Keys and Server name in `initialScript.py`
 
 - Open `initialScript.py` and replace the key where indicated.
+- Replace the server name where indicated.
 - Run the script in the command line using the following command:
 
 ```bash
@@ -123,9 +124,10 @@ This should create the **Activities** database and the **Activity** table:
 
 ---
 
-### 5) Replace Key in `server.py`
+### 5) Replace Key and Server name in `server.py`
 
 - Open `server.py` and replace the key where indicated.
+- Replace server name where indicated.
 - Run the server script using the following command:
 
 ```bash
