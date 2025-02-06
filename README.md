@@ -97,10 +97,10 @@ Follow the tutorial linked in your Fitbit developer account to retrieve the requ
 
 ### 3) Create an ngrok Endpoint
 
-- Run ngrok to expose port 8000:
+- Run ngrok to expose port 80:
 
 ```bash
-ngrok http 8000
+ngrok http 80
 ```
 
 This will expose port 80, allowing it to receive requests from the Pipedream URL.
