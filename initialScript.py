@@ -13,7 +13,7 @@ header = {
 #Create a new database called AcitivityData if it does not already exist
 connection = (
         'Driver={ODBC Driver 17 for SQL Server};'
-        'Server=MAITREYI\SQLEXPRESS;'
+        'Server=MAITREYI\SQLEXPRESS;' #Replace with server name
         'Database=master;'
         'Trusted_Connection=yes;'
         )
