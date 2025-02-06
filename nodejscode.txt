@@ -1,0 +1,28 @@
+export default defineComponent({
+  async run({ steps, $ }) {
+    const header = steps.trigger.event.method;
+    if (header == "GET") {
+       const verify = steps.trigger.event.query.verify;
+       if (verify === "5b09d7370e4925412e7945cc0260ea23f5d22cb55b27444d431c4d6ae20b8ee0") {
+          await $.respond({
+          status: 204,
+          body: "",
+          });
+        } else {
+          await $.respond({
+          status: 404,
+          body: "",
+          });
+        }
+      $.flow.exit()
+    }
+    else if (header == "POST"){
+       await $.respond({
+          status: 204,
+          body: "",
+          });
+    }
+   
+   
+  },
+});
