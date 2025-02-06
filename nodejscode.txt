@@ -3,7 +3,7 @@ export default defineComponent({
     const header = steps.trigger.event.method;
     if (header == "GET") {
        const verify = steps.trigger.event.query.verify;
-       if (verify === "{Replace with verification code") {
+       if (verify === "<Replace with verification code>") {
           await $.respond({
           status: 204,
           body: "",
