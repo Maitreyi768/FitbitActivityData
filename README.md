@@ -236,26 +236,28 @@ This pulls accelerometer data and stores it in a csv file. The app can also simu
 #### 2) If you are not using a simulator enable the developer bridge by going to the settings on the watch and tapping developer bridge. Wait until it says Connected to Server.
 #### 3) Run the server
         - Run the server script using the following command:
-
-          ```bash
-          python server.py
-          ```
-#### 4) Launch the interactive fitbit shell using command
-        ```bash
-        npx fitbit
-        ```
-
-        The command prompt should now display
-        ```bash
-        fitbit$
-        ```
-        Now that you are in the Fitbit shell type
-        ```bash
-        build
-        ```
-        Once that has run type
-        ```bash
-        install
-        ```
+         ```bash
+         python server.py
+         ```
+         
+         #### 4) Launch the interactive fitbit shell using command
+         ```bash
+         npx fitbit
+         ```
+         
+         The command prompt should now display
+         ```bash
+         fitbit$
+         ```
+         
+         Now that you are in the Fitbit shell type
+         ```bash
+         build
+         ```
+         
+         Once that has run type
+         ```bash
+         install
+         ```
       The app has now been installed on the Fitbit device/OS Simulator. You are now able to interact with the app and see the logs.
 
