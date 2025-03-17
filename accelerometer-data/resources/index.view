@@ -1,0 +1,5 @@
+<svg>
+  <use id="recordButton" href="#text-button" class="text-button primary application-fill" y="75" />
+  <use id="stopButton" href="#text-button" class="text-button primary application-fill"  />
+  <!--<rect id="touch" width="100%" height="100%" pointer-events="visible" opacity="0" />-->
+</svg>

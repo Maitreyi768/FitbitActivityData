@@ -1,0 +1,24 @@
+.foreground-fill            { fill: fb-white; }
+
+.defaultText {
+  font-size: 32;
+  font-family: Colfax-Bold;
+  font-weight: regular;
+  text-length: 32;
+}
+
+#background {
+  width: 100%;
+  height: 100%;
+  fill: white;
+}
+
+#recordButton #text {
+  text-buffer: "START RECORDING";
+  fill: white;
+}
+
+#stopButton #text {
+  text-buffer: "STOP RECORDING";
+  fill: white;
+}
