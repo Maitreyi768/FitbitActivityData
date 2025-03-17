@@ -1,9 +1,10 @@
+# Activity Data
 
-# FitbitActivityData
+## FitbitActivityData
 
-This repository pulls activity data from Fitbit and stores it in SQL Server.
+This repository pulls activity data from Fitbit and stores it in SQL Server. It uses the Web API which is a REST API. 
 
-## Installment Requirements
+### Installment Requirements
 
 1. **Download Python (version > 3.10)**  
    [Link: Python Downloads](https://www.python.org/downloads/)
@@ -51,7 +52,7 @@ This repository pulls activity data from Fitbit and stores it in SQL Server.
   deactivate
   ```
 
-## Account Requirements
+### Account Requirements
 
 1. **Fitbit Developer Account**  
    [Link: Fitbit Developer](https://dev.fitbit.com/)
@@ -59,11 +60,14 @@ This repository pulls activity data from Fitbit and stores it in SQL Server.
 2. **Pipedream Account**  
    [Link: Pipedream](https://pipedream.com/)
 
-## Getting Started
+### Getting Started
 
-### 1) Register an App in Fitbit Developer Account
+#### 1) Register an App in Fitbit Developer Account 
+An app allows consists of a client ID and secret which is used during the authorization process in order to access data from the Web API.
 
-Provide the following details during the registration process:
+Use this link:[Link: Fitbit Developer](https://www.fitbit.com/dev)
+
+In the upper right hand corner click on register an app. Provide the following details during the registration process:
 
 - **Application Name**
 - **Description**
@@ -89,7 +93,8 @@ Example registration:
 
 ### 2) Follow the OAuth 2.0 Tutorial to Get Access Keys
 
-Follow the tutorial linked in your Fitbit developer account to retrieve the required access keys:
+In order to access the data from the Web API the tokens for authorization are needed. The Fitbit uses Oauth2 to do this.
+Follow the tutorial linked in the Fibit developer account to get the required access keys. It can be found as shown below:
 
 ![Follow the link provided](assets/images/oauth.png)
 
@@ -109,6 +114,7 @@ This will expose port 80, allowing it to receive requests from the Pipedream URL
 
 
 ### 4) Replace Keys and Server name in `initialScript.py`
+This step creates the initial sql tables needed.
 
 - Open `initialScript.py` and replace the key where indicated.
 - Replace the server name where indicated.
