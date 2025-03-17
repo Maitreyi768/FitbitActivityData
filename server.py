@@ -4,6 +4,9 @@ import json
 import requests
 import pyodbc
 import threading
+import os 
+import csv
+
 
 app = Flask(__name__)
 
@@ -112,17 +115,71 @@ def sendRequest():
             conn.close()
     
 
+    
+
+def save_to_csv(data):
+ 
+    # Check if the CSV file exists
+    exists = os.path.exists('accelerometer_data.csv')
+    
+    # Open csv file accelerometer_data
+    with open('accelerometer_data.csv', mode='a', newline='') as file:
+        writer = csv.writer(file)
+        
+        # Write headers for new file
+        if not exists:
+            writer.writerow(['timestamp', 'x', 'y', 'z'])
+        
+        # Data should be a list of dictionaries
+        if isinstance(data, list):
+            # Extract data
+            batchData = data[0]
+
+            # Validates that x, y, z are lists consisting of accelerometer data
+            if isinstance(batchData.get('x'), list) and isinstance(batchData.get('y'), list) and isinstance(batchData.get('z'), list):
+                # Write each row of data
+                for i in range(len(batchData['x'])):
+                    row = [ batchData['timestamp'][i],batchData['x'][i],batchData['y'][i],batchData['z'][i]]
+                    writer.writerow(row)
+            else:
+                print("Incorrect format")
+        else:
+            print("Error")
 
     
-    
 @app.route('/', methods = ['POST'])
-def webhook():
-    if request.method == "POST":
-        print(request.json)
-        sendRequest()
-        return 'success',200
+def postRequestRecieved():
+    if request.method == 'POST':
+        # Check if binary data has been sent from accelerometer
+        if request.content_type == 'application/octet-stream':
+            # Get the binary data
+            file_data = request.data  
+
+            # Decode the binary data 
+            try:
+                decoded_data = file_data.decode('utf-8')  
+                print(decoded_data)  
+                data = json.loads(decoded_data)
+                save_to_csv(data)
+
+            except UnicodeDecodeError:
+                # If the binary data cannot be decoded as a string, it may be a non-text file
+                print("Data can not be decoded")
+
+            return 'Data has been successfully recieved by the server', 200
+        
+        else:
+            # Get the webhook request
+            data = request.get_json()  
+            print("Received JSON data:", data)
+
+            # send request to get new data from database
+            sendRequest()
+
+            return 'success', 200
+
     else:
-        return {"message": "Only POST Requests are accepted"},405
+        return {"message": "Only POST requests are allowed"}, 405
 
 if __name__ == '__main__':
     app.run()
