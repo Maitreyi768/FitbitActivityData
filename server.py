@@ -5,25 +5,31 @@ import requests
 import pyodbc
 import threading
 import os 
+import logging
 import csv
 
 
 app = Flask(__name__)
 
-lock = threading.Lock()
+#locks for concurrency
+db_lock = threading.Lock()  
+csv_lock = threading.Lock() 
 def sendRequest():
     print("sending request")
-    today = datetime.strftime(datetime.now()), '%Y-%m-%d')
+    today = datetime.strftime(datetime.now(), '%Y-%m-%d')
+    yesterday = datetime.strftime(datetime.now() - timedelta(days=1), '%Y-%m-%d')
     api = f"https://api.fitbit.com/1/user/-/activities/list.json?afterDate={today}&sort=asc&offset=0&limit=100"
     header = {
         "Authorization": "Bearer {Replace with access token}", #Replace here with access token
         "Accept-Type": "application/json"
     }
-    with lock:
-        print("Sending request...")
-        activityrequest = requests.get(api, headers=header)
-        if activityrequest.status_code != 200:
-            return
+    print("Sending request...")
+    activityrequest = requests.get(api, headers=header)
+    if activityrequest.status_code != 200:
+    	return
+    responseJson = activityrequest.json() 
+    with db_lock:
+        
             
         db_connection = (
             'Driver={ODBC Driver 17 for SQL Server};'
@@ -48,7 +54,6 @@ def sendRequest():
                 print(item)
                 
             
-            responseJson = activityrequest.json() 
 
             for activity in responseJson["activities"]:
                 starttime = datetime.fromisoformat(activity["startTime"].replace("Z", "")) 
@@ -118,33 +123,33 @@ def sendRequest():
     
 
 def save_to_csv(data):
- 
-    # Check if the CSV file exists
-    exists = os.path.exists('accelerometer_data.csv')
-    
-    # Open csv file accelerometer_data
-    with open('accelerometer_data.csv', mode='a', newline='') as file:
-        writer = csv.writer(file)
+    with csv_lock:
+        # Check if the CSV file exists
+        exists = os.path.exists('accelerometer_data.csv')
         
-        # Write headers for new file
-        if not exists:
-            writer.writerow(['timestamp', 'x', 'y', 'z'])
-        
-        # Data should be a list of dictionaries
-        if isinstance(data, list):
-            # Extract data
-            batchData = data[0]
+        # Open csv file accelerometer_data
+        with open('accelerometer_data.csv', mode='a', newline='') as file:
+            writer = csv.writer(file)
+            
+            # Write headers for new file
+            if not exists:
+                writer.writerow(['timestamp', 'x', 'y', 'z'])
+            
+            # Data should be a list of dictionaries
+            if isinstance(data, list):
+                # Extract data
+                batchData = data[0]
 
-            # Validates that x, y, z are lists consisting of accelerometer data
-            if isinstance(batchData.get('x'), list) and isinstance(batchData.get('y'), list) and isinstance(batchData.get('z'), list):
-                # Write each row of data
-                for i in range(len(batchData['x'])):
-                    row = [ batchData['timestamp'][i],batchData['x'][i],batchData['y'][i],batchData['z'][i]]
-                    writer.writerow(row)
+                # Validates that x, y, z are lists consisting of accelerometer data
+                if isinstance(batchData.get('x'), list) and isinstance(batchData.get('y'), list) and isinstance(batchData.get('z'), list):
+                    # Write each row of data
+                    for i in range(len(batchData['x'])):
+                        row = [batchData['timestamp'][i], batchData['x'][i], batchData['y'][i], batchData['z'][i]]
+                        writer.writerow(row)
+                else:
+                    print("Incorrect format")
             else:
-                print("Incorrect format")
-        else:
-            print("Error")
+                print("Error")
 
     
 @app.route('/', methods = ['POST'])
