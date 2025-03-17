@@ -1,6 +1,8 @@
 # Fitbit Data 
 - [ActivityData](#FitbitActivityData)
 - [AccelerometerData](#AccelerometerData)
+
+
 Clone the repository to begin.
 
 (Note: The server file is the same for accessing the fitbit activity data and accelerometer data)
@@ -235,9 +237,9 @@ This pulls accelerometer data and stores it in a csv file. The app can also simu
 #### 3) Run the server
         - Run the server script using the following command:
 
-         ```bash
-         python server.py
-         ```
+          ```bash
+          python server.py
+          ```
 #### 4) Launch the interactive fitbit shell using command
         ```bash
         npx fitbit
