@@ -231,14 +231,14 @@ This pulls accelerometer data and stores it in a csv file. The app can also simu
 3. **If not using simulator, fitbit mobile application synced with the device is needed**
 
 ### Getting Started
-
-#### 1) change directory to accerometer data using command "cd accelerometer-data"
-#### 2) If you are not using a simulator enable the developer bridge by going to the settings on the watch and tapping developer bridge. Wait until it says Connected to Server.
-#### 3) Run the server
+#### 1) Run the server
 - Run the server script using the following command:
 ```bash
 python server.py
 ```
+#### 2) In a different command prompt change directory to accerometer data using command "cd accelerometer-data"
+#### 3) If you are not using a simulator enable the developer bridge by going to the settings on the watch and tapping developer bridge. Wait until it says Connected to Server.
+
 
 #### 4) Launch the interactive fitbit shell using command
 ```bash
