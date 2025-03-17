@@ -91,7 +91,7 @@ Example registration:
 
 ---
 
-### 2) Follow the OAuth 2.0 Tutorial to Get Access Keys
+#### 2) Follow the OAuth 2.0 Tutorial to Get Access Keys
 
 In order to access the data from the Web API the tokens for authorization are needed. The Fitbit uses Oauth2 to do this.
 Follow the tutorial linked in the Fibit developer account to get the required access keys. It can be found as shown below:
@@ -100,7 +100,7 @@ Follow the tutorial linked in the Fibit developer account to get the required ac
 
 ---
 
-### 3) Create an ngrok Endpoint
+#### 3) Create an ngrok Endpoint
 
 - Run ngrok to expose port 80:
 
@@ -113,7 +113,7 @@ This will expose port 80, allowing it to receive requests from the Pipedream URL
 ---
 
 
-### 4) Replace Keys and Server name in `initialScript.py`
+#### 4) Replace Keys and Server name in `initialScript.py`
 This step creates the initial sql tables needed.
 
 - Open `initialScript.py` and replace the key where indicated.
@@ -130,7 +130,7 @@ This should create the **Activities** database and the **Activity** table:
 
 ---
 
-### 5) Replace Key and Server name in `server.py`
+#### 5) Replace Key and Server name in `server.py`
 
 - Open `server.py` and replace the key where indicated.
 - Replace server name where indicated.
@@ -171,7 +171,7 @@ python server.py
 
 ---
 
-### 7) Add and verify subscriber
+#### 7) Add and verify subscriber
 
 - Edit the registered app on the Fitbit account  
 - Add a subscriber to the app. The Endpoint URL of the suscriber should be the unique URL provided to trigger.
