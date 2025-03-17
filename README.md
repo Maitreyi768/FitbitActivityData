@@ -23,21 +23,22 @@ This repository pulls activity data from Fitbit and stores it in SQL Server.
   Linux/macOS:  
 
   ```bash
-  python3 -m venv myenv
+  python3 -m venv fitbitdata
   ``` 
   Windows:  
   ```bash
-  python -m venv myenv
+  python -m venv fitbitdata
   ```
    
-- Activate the virtual environment:  
+- Activate the virtual environment in the fitbitdata folder:
+  
   Linux/macOS:
   ```bash
-  source myenv/bin/activate
+  source bin/activate
   ```
   Windows:
   ```bash
-  myenv\Scripts\activate
+   .\Scripts\activate
   ```  
 - Once the environment has been activated install dependencies with pip from requirements.txt:
   
@@ -96,10 +97,10 @@ Follow the tutorial linked in your Fitbit developer account to retrieve the requ
 
 ### 3) Create an ngrok Endpoint
 
-- Run ngrok to expose port 8000:
+- Run ngrok to expose port 80:
 
 ```bash
-ngrok http 8000
+ngrok http 80
 ```
 
 This will expose port 80, allowing it to receive requests from the Pipedream URL.
@@ -107,9 +108,10 @@ This will expose port 80, allowing it to receive requests from the Pipedream URL
 ---
 
 
-### 4) Replace Keys in `initialScript.py`
+### 4) Replace Keys and Server name in `initialScript.py`
 
 - Open `initialScript.py` and replace the key where indicated.
+- Replace the server name where indicated.
 - Run the script in the command line using the following command:
 
 ```bash
@@ -122,9 +124,10 @@ This should create the **Activities** database and the **Activity** table:
 
 ---
 
-### 5) Replace Key in `server.py`
+### 5) Replace Key and Server name in `server.py`
 
 - Open `server.py` and replace the key where indicated.
+- Replace server name where indicated.
 - Run the server script using the following command:
 
 ```bash

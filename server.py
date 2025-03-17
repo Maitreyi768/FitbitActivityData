@@ -24,7 +24,7 @@ def sendRequest():
             
         db_connection = (
             'Driver={ODBC Driver 17 for SQL Server};'
-            'Server=MAITREYI\SQLEXPRESS;'
+            'Server=MAITREYI\SQLEXPRESS;' #Replace with server name
             'Database=Activities;'
             'Trusted_Connection=yes;'
         )
