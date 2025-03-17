@@ -1,8 +1,12 @@
-# Activity Data
+# Fitbit Data 
+- [ActivityData](#FitbitActivityData)
+- [AccelerometerData](#AccelerometerData)
+Clone the repository to begin.
 
+(Note: The server file is the same for accessing the fitbit activity data and accelerometer data)
 ## FitbitActivityData
 
-This repository pulls activity data from Fitbit and stores it in SQL Server. It uses the Web API which is a REST API. 
+This pulls activity data from Fitbit and stores it in SQL Server. It uses the Web API which is a REST API. 
 
 ### Installment Requirements
 
@@ -51,6 +55,7 @@ This repository pulls activity data from Fitbit and stores it in SQL Server. It 
   ```bash 
   deactivate
   ```
+6. **Fitbit mobile application**
 
 ### Account Requirements
 
@@ -142,7 +147,7 @@ python server.py
 
 ---
 
-### 6) Create Pipedream workflow
+#### 6) Create Pipedream workflow
 
 - Create a new workflow in pipedream and add a new workflow when prompted
 
@@ -185,7 +190,70 @@ python server.py
 - Deploy the Pipedream workflow.
 - Click on verify on the Fitbit App to verify the subscriber.  
 
-### 8) Edit Activity Data Using Fitbit
+#### 8) Edit Activity Data Using Fitbit
 
 - Complete an activity whilst wearing the Fitbit. Keep the Fitbit app open on your phone to immediately sync the data with your account.
 - This should update the **Activity** table successfully.
+
+## AccelerometerData
+
+This pulls accelerometer data and stores it in a csv file. The app can also simulate accerometer data if using Fitbit OS Simulator. The app uses the Device API which has access to the sensors on the Fitbit devices. It also uses the Companion API to store data on a mobile device and transfer the data to a server.
+
+### Installment Requirements
+
+1. **Download NodeJS**
+   [Link: NodeJS download](https://nodejs.org/en/download/)
+
+2. **Download nvm**
+   [Link: NVM Download](https://github.com/nvm-sh/nvm)
+
+3. **Switch Node.js version to recommended version 14**
+     ```bash
+     nvm install 14
+     nvm alias default 14
+     ```
+     Use --version to verify corrrect version 
+     ```bash
+     node --version 
+     v14.21.3
+     ```
+### Account/Device Requirements
+
+1. **Fitbit Developer Account**  
+   [Link: Fitbit Developer](https://dev.fitbit.com/)
+   
+2. **Fitbit OS Device (Versa 1,Versa 2, Versa 3, Sense or Ionic) or you can download the Fitbit OS Simulator**
+   [Link: Windows](https://simulator-updates.fitbit.com/download/stable/win)
+   [Link: MacOS](https://simulator-updates.fitbit.com/download/stable/mac)
+
+3. **If not using simulator, fitbit mobile application synced with the device is needed**
+
+### Getting Started
+
+#### 1) change directory to accerometer data using command "cd accelerometer-data"
+#### 2) If you are not using a simulator enable the developer bridge by going to the settings on the watch and tapping developer bridge. Wait until it says Connected to Server.
+#### 3) Run the server
+        - Run the server script using the following command:
+
+         ```bash
+         python server.py
+         ```
+#### 4) Launch the interactive fitbit shell using command
+        ```bash
+        npx fitbit
+        ```
+
+        The command prompt should now display
+        ```bash
+        fitbit$
+        ```
+        Now that you are in the Fitbit shell type
+        ```bash
+        build
+        ```
+        Once that has run type
+        ```bash
+        install
+        ```
+      The app has now been installed on the Fitbit device/OS Simulator. You are now able to interact with the app and see the logs.
+
